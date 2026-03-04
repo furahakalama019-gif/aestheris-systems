@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aestheris Systems</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="bridge">
+        <div class="bridge-logo">
+            <div class="logo-icon">
+                <span>AESTHERIS // OS</span>
+            </div>
+
+            <div class="bridge-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="manifest.html" class="nav-item">Manifest</a>
+                <a href="fleet.html" class="nav-item active">Fleet</a>
+                <a href="telemetry.html" class="nav-item">Telemetry</a>
+                <a href="crew.html" class="nav-item">Crew</a>
+                <a href="research.html" class="nav-item">Research</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+                </div>
+
+                <div class="bridge-stats">
+                    <div class="stat-group">
+                        <span class="stat-label">SIG</span>
+                        <div class="signal-bars">
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-flicker"></div>
+                        </div>
+                    </div>
+                    <div class="stat-group">
+                        <span class="stat-label">PWR</span>
+                        <span class="stat-value">88%</span>
+                    </div>
+                    <div class="bridge-time" id="clock">21:15</div>
+                </div>
+    </nav>
+    <div class="container">
+        <header class="page-header">
+            <h2 class="cyan-text uppercase tracking">Fleet_Inventory // v4.0</h2>
+            <h1>Vanguard-Class Interceptor</h1>
+        </header>
+
+        <div class="fleet-grid">
+            <div class="blueprint-card">
+                <div class="blueprint-placeholder">
+                    <div class="scanline"></div>
+
+                    <p>[ ORBITAL_RENDER_LOADING... ]</p>
+            </div>
+            <div class="blueprint-footer">
+                <span>MODEL: NX-V4</span>
+                <span>STATUS: IN_PRODUCTION</span>
+            </div>
+        </div>
+
+        <div class="specs-card">
+            <h3>Ship Specifications</h3>
+            <table class="specs-table">
+                <tr>
+                    <td>Dry Mass</td>
+                    <td class="value">2,450 KG</td>
+                </tr>
+                <tr>
+                    <td>Propulsion</td>
+                    <td class="value">Xenon Ion (XIT-2)</td>
+                </tr>
+                <tr>
+                    <td>Max Delta-V</td>
+                    <td class="value">4500 m/s</td>
+                    </tr>
+                <tr>
+                    <td>Payload Capacity</td>
+                    <td class="value">850 KG</td>
+                </tr>
+                <tr>
+                    <td>Life Support</td>
+                    <td class="value">Class-A (4 Crew)</td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+
+    <div class="container" style="max-width: 1000px; margin: auto; padding: 40px;">
+        <h2 style="color: #00F0FF;">Fleet Inventory // v4.0</h2>
+        <h1>Vanguard-Class Interceptor</h1>
+
+        <div style="display: flex; gap: 40px;" align-items: flex-start;">
+        <div class="blueprint-card" style="flex: 2; height: 300px; display: flex; align-items: center; justify-content: center;">
+            <p style="opacity: 0.5;">[ ORBITAL_RENDER_LOADING... ]</p>
+            </div>
+
+            <div style="flex: 1;">
+                <h3 style="border-bottom: 1px solid #333; padding-bottom: 10px;">Ship Specifications</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                    <tr style="border-bottom: 1px solid #222;">
+                        <td style="padding: 10px 0;">Dry Mass</td>
+                        <td style="text-align: right;">2,450 KG</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #222;">
+                        <td style="padding: 10px 0;">Propulsion</td>
+                        <td style="text-align: right;">Ion-Thrust</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #222;">
+                        <td style="padding: 10px 0;">Fuel</td>
+                        <td style="text-align: right;">88%</td>
+                        </tr>
+                </table>
+                </div>
+                </div>
+                </div>
+                <script>
+                    function updateClock() {
+                        const now = new Date();
+                        const timeString = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0') + ":" + now.getSeconds().toString().padStart(2, '0');
+                        document.getElementById('clock').innerHTML = timeString;
+                    }
+                        setTimeout(updateClock, 1000);
+                        updateClock(); // Run immediately
+                        </script>
+    
+                    < div id="terminal-overlay" class="terminal-hidden">
+                    < div class="terminal-header">
+                    <span>AESTHERIS_TERMINAL_v4.0.2</span>
+                    <button onclick="toggleTerminal()" class="close-btn">[X]</button>
+                    </div>
+                    < div class="terminal-body" id="terminal-content">
+                    <p class="terminal-line">> SYSTEM_READY...</p>
+                    <p class="terminal-line">> TYPE 'HELP' FOR COMMAND_LIST</p>
+                    </div>
+                    <div class="terminal-input-area">
+                        <span class="prompt">></span>
+                        <input type="text" id="user-input" autocomplete="off" placeholder="Enter command..." />
+                    </div>
+                    </div>
+
+                    <button class="terminal-trigger" onclick="toggleTerminal()">_CONSOLE</button>
+</body>
+</html>

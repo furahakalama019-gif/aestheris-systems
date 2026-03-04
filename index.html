@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+    <title>Aestheris Systems | Command</title>
+    <style>
+        /* 1. GLOBAL STYLES */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #05070a; /* Dark Space Background */
+            color: #ffffff; /*White Text */
+            font-family: 'Courier New', 'Courier New', Courier, monospace; /* Technical Font */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;  
+        }
+
+        /* 2. NAVIGATION BRIDGE */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        nav a.active { color: #00F0FF; }
+
+        /* 3. HERO SECTION */
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin: 10px 0;
+            letter-spacing: -5px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            color: #888;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+
+        /* 4. THE ORANGE BUTTON */
+        .btn-primary {
+            background-color: #FF5C00;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: white;
+            color: black;
+        }
+
+        /* SOCIAL PROOF (STATS) */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px 0;
+        }
+
+        .stat-card { text-align: center; }
+
+        .stat-value {
+            display: block;
+            color: #00F0FF;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+</body>
+
+<nav class="bridge">
+    <div class="bridge-logo">
+        <div class="logo-icon"></div>
+        <span>AESTHERIS // OS</span>
+    </div>
+
+    <div class="bridge-links">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="manifest.html" class="nav-item">Manifest</a>
+        <a href="fleet.html" class="nav-item">Fleet</a>
+        <a href="telemetry.html" class="nav-item">Telemetry</a>
+        <a href="crew.html" class="nav-item">Crew</a>
+        <a href="research.html" class="nav-item">Research</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        </div>
+
+        <div class="bridge-stats">
+            <div class="stat-group">
+                <span class="stat-label">SIG</span>
+                <div class="signal-bars">
+                    <div class="bar-active"></div>
+                    <div class="bar-active"></div>
+                    <div class="bar-active"></div>
+                    <div class="bar-flicker"></div>
+                </div>
+            </div>
+            <div class="stat-group">
+                <span class="stat-value">88%</span>
+                <span class="stat-label">PWR</span>
+            </div>
+            <div class="bridge-time" id="clock">21:15</div>
+        </div>
+
+        <button class="login-btn" onclick="location.href='/login'">LOGIN</button>
+</nav>
+
+<section class="hero">
+    <h2 style="color: #00F0FF; font-size: 12px; letter-spacing: 5px;">NEURAL LINK ACTIVE</h2>
+    <h1>AESTHERIS SYSTEMS</h1>
+    <p>Infrastructure for the multi-planetary economy. Real-time orbital intelligence and deep space logistics.</p>
+    <a href="manifest.html"
+    class="btn-primary">ACCESS CONTROL PANEL</a>
+</section>
+
+<div class="stats-container">
+    <div class="stat-card">
+        <span class="stat-value">14</span>
+        <span class="stat-label">Active Missions</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-value">2.4B</span>
+        <span class="stat-label">KM Tracked</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-value">Target Vector</span>
+    </div>
+</div>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const timeString = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0') + ":" + now.getSeconds().toString().padStart(2, '0');
+        document.getElementById('clock').innerHTML = timeString;
+    }
+        setTimeout(updateClock, 1000);
+        updateClock(); // Run immediately
+</script>
+
+                    < div id="terminal-overlay" class="terminal-hidden">
+                    < div class="terminal-header">
+                    <span>AESTHERIS_TERMINAL_v4.0.2</span>
+                    <button onclick="toggleTerminal()" class="close-btn">[X]</button>
+                    </div>
+                    < div class="terminal-body" id="terminal-content">
+                    <p class="terminal-line">> SYSTEM_READY...</p>
+                    <p class="terminal-line">> TYPE 'HELP' FOR COMMAND_LIST</p>
+                    </div>
+                    <div class="terminal-input-area">
+                        <span class="prompt">></span>
+                        <input type="text" id="user-input" autocomplete="off" placeholder="Enter command..." />
+                    </div>
+                    </div>
+
+                    <button class="terminal-trigger" onclick="toggleTerminal()">_CONSOLE</button>
+                    </body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetheris Mission Control</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: white;
+            background-image: radial-gradient(circle at 2px 2px,rgba(0, 240, 255, ));
+            background-size: 40px 40px;
+        }
+        .glass-panel {
+            background: rgba(white);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(white);
+            position: absolute;
+            animation: move 8s linear infinite; 
+        }
+        @keyframes move {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        body {
+            background-color: #0b0c10; /* Deep black/dark grey */
+            color: #c5c6c7; /* Light grey/white text */
+            font-family: 'Courier New', monospace; /* Sci-fi feel */
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Makes your links blue/cyan to match the terminal look */
+        a {
+            color: #66fcf1;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        /* Optional: Adds that subtle glow to your text */
+        .glow-text {
+            text-shadow: 0 0 5px #66fcf1;
+        }
+        </style>
+        
+</head>
+<body class="text-[#00FF0FF] min-h-screen overflow-hidden flex flex-col">
+    <body class="bg-[#05070a] text-white font-mono"></body>
+    <nav class="bridge">
+        <div class="bridge-logo">
+            <div class="logo-icon">
+                <span>AESTHERIS // OS</span>
+            </div>
+
+            <div class="bridge-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="manifest.html" class="nav-item">Manifest</a>
+                <a href="fleet.html" class="nav-item">Fleet</a>
+                <a href="telemetry.html" class="nav-item">Telemetry</a>
+                <a href="crew.html" class="nav-item">Crew</a>
+                <a href="research.html" class="nav-item">Research</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+                </div>
+
+                <div class="bridge-stats">
+                    <div class="stat-group">
+                        <span class="stat-label">SIG</span>
+                        <div class="signal-bars">
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-flicker"></div>
+                        </div>
+                    </div>
+                    <div class="stat-group">
+                        <span class="stat-label">PWR</span>
+                        <span class="stat-value">88%</span>
+                    </div>
+                    <div class="bridge-time" id="clock">21:15</div>
+                    </div>
+                    </nav>
+
+    <div class="scanline"></div>
+
+    <header class="h-16 border-b border-[#00F0FF]/20 flex items-center justify btn px-6 bg-black/40">
+        <div class="flex items-center gap-4">
+            <div class="w-8 h-8 bg-[#00F0FF] rounded-sm flex items-center justify-center font-bold text-black">A</div>
+            <div>
+            <h1 class="text-sm font-bold tracking-widest uppercase">Aetheris Systems</h1>
+            <p class="text-[10px] text-[#FF5C00] animate-pulse uppercase">.Link Established: Mars_Orbiter_Alpha</p>
+            </div>
+        </div>
+
+        <div class="hidden md:flex gap-12 text-[11px]">
+            <div><span class="opacity-50">VELOCITY:</span>27,450 km/h</div>
+            <div><span class="opacity-50">FUEL_LVL:</span> 88.42%</div>
+            <div><span class="opacity-50">ETA_MARS:</span> 142d 04h 22m</div>
+        </div>
+
+        <div class="text-xs border border-[#00FF0FF]/40 px-3 py-1 rounded-sm uppercase">System_Nominal</div>
+    </header>
+
+    <div class="flex flex-1">
+        <nav class="w-20 border-r border-[#00F0FF]/10 flex flex-col items-center py-8 gap-10 bg-black/20 text-xs tracking tighter">
+            <div class="rotate-[-90deg] whitespace-nowrap opacity-40 hover:opacity-100 cursor-pointer transition-all">DASHBOARD</div>
+            <div class="rotate-[-90deg] whitespace-nowrap opacity-100 border-b border-[#00F0FF] cursor-pointer">TELEMETRY</div>
+            <div class="rotate-[-90deg] whitespace-nowrap opacity-40 hover:opacity-100 cursor-pointer transition-all">PAYLOAD</div>
+            <div class="rotate-[-90deg] whitespace-nowrap opacity-40 hover:opacity-100 cursor-pointer transition-all">LOGS</div>
+            <div onclick="showPage('dashboard')"
+            class="nav-item cursor-pointer">DASHBOARD</div>
+            <div onclick="showPage('telemetry')"
+            class="nav-item cursor-pointer border-b border-[#00F0FF]">TELEMETRY</div>
+            <div onclick="showPage('propulsion')"
+            class="nav-item cursor-pointer">PROPULSION</div>
+                </nav>
+
+                <main class="flex-1 p-8 grid-cols-12 gap-6 overflow-y-auto">
+
+                    <section class="col-span-12 lg:col-span-8 glass-panel rounded-lg relative overflow-hidden h-[400px]">
+                        <div class="absolute top-4 left-4 z-10">
+                            <h2 class="text-xs font-bold uppercase tracking-widest mb-1">Orbital_Trajectory_Map</h2>
+                            <div class="h-1 w-20 bg-[#00FOFF]"></div>
+                        </div>
+
+                        <div class="flex-items-center justify-center h-full opacity-30 text-xs">
+                            [REAL-TIME_VISUALIZATION LOADING...]
+                        </div>
+                    </section>
+
+                    <section class="col-span-12 lg:col-span-4
+                    glass-panel rounded-lg p-6">
+                    <h2 class="text-xs font-bold uppercase mb-6 flex justify-between">
+
+                        <span>Engine_Diagnostics</span>
+                        <span class="text-[#FF5C00]">Active</span>
+                    </h2>
+
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-[10px] mb-2"><span>THRUST_POWER</span><span>94%</span>/div>
+                                <div class="w-full bg-white/5 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-[#00F0FF] h-full w-[94%] shadow-[0_0_10px_#00F0FF]"></div>
+                                </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[10px]
+                            mb-2"><span>THERMAL_LOAD</span><span>62%</span></div>
+                            <div class="w-full bg-white/5 h-2 rounded-full
+                            overflow-hidden">
+                        <div class="bg-[#FF5C00] h-full w-[62%]
+                        shadow-[0_0_10px_#FF5C00]"></div>
+                    </div>
+                        </div>
+
+                        </div>
+                </section>
+
+                <section class="col-span-12 glass-panel rounded-lg p-6">
+                    <table class="w-full text-left text-[11px] border-collapse">
+                        <thead>
+                            <tr class="opacity-50 border-b border-[#00FOFF]/20">
+                                <th class="pb-3 font-normal">TIMESTAMP</th>
+                                <th class="pb-3 font-normal">SOURCE</th>
+                                <th class="pb-3 font-normal">EVENT_ID</th>
+                                <th class="pb-3 font-normal">STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/5">
+                            <tr>
+                                <td class="py-3">14:22:01.04</td>
+
+                                <td>REACTOR_01</td>
+
+                                <td>COR_STAB_NOMINAL</td>
+                                <td class="text-green-400">SUCCESS</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3">14:21:58.22</td>
+
+                                <td>NAV_GUIDANCE</td>
+
+                                <td>VECTOR_ADJ_04</td>
+                                <td class="text-yellow-400">PENDING</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3">14:20:12:99</td>
+
+                                <td>HULL_SENSORS</td>
+
+                                <td>MICRO_METEOR_IMPACT</td>
+                                <td class="text-red-400">ALERT</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                </section>
+
+                </main>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0') + ":" + now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('clock').innerHTML = timeString;
+        }
+            setTimeout(updateClock, 1000);
+            updateClock(); // Run immediately
+    </script>
+                    < div id="terminal-overlay" class="terminal-hidden">
+                    < div class="terminal-header">
+                    <span>AESTHERIS_TERMINAL_v4.0.2</span>
+                    <button onclick="toggleTerminal()" class="close-btn">[X]</button>
+                    </div>
+                    < div class="terminal-body" id="terminal-content">
+                    <p class="terminal-line">> SYSTEM_READY...</p>
+                    <p class="terminal-line">> TYPE 'HELP' FOR COMMAND_LIST</p>
+                    </div>
+                    <div class="terminal-input-area">
+                        <span class="prompt">></span>
+                        <input type="text" id="user-input" autocomplete="off" placeholder="Enter command..." />
+                    </div>
+                    </div>
+
+                    <button class="terminal-trigger" onclick="toggleTerminal()">_CONSOLE</button>
+</body>
+</html>
+
+<section class="col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <div class="glass-panel p-6 rounded-sm border-1-4 border-[#00F0FF] relative group cursor-pointer hover:bg-white/10 transition-all">
+        <div class="flex justify-between items-start mb-4">
+            <span class="text-[10px] bg-[#00F0FF]/20 px-2 py-0.5 rounded text-[#00F0FF]">ID: <NX-42></span>
+                <span class="text-[10px] text-[#00F0FF] animate-pulse">. ACTIVE</span>  
+        </div>
+        <h3 class="text-lg font-bold tracking-tighter mb-1">ION_STRIKE_ONE</h3>
+        <p class="text-[10px] opacity-60 mb-4">Target: Jupiter / Ganymede Orbit</p>
+
+        <div class="w-full bg-white/5 h-1.5 mb-2">
+            <div class="bg-[#00F0FF] h-full w-[65%] relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full animate-[shimmer_2s_infinite]"></div>
+            </div>
+        </div>
+        <div class="flex justify-between text-[9px] opacity-40">
+            <span>65% COMPLETE</span>
+            <span>ETA: 2027-04-12</span>
+    </div>
+    </div>
+
+    <div class="glass-panel p-6 rounded-sm border-1-4 border-[#FF5C00] relative group cursor-pointer hover:bg-white/10 transition-all">
+        <div class="flex justify-between items-start mb-4">
+            <span class="text-[10px] bg-[#FF5C00]/20 px-2 py-0.5 rounded text-[#FF5C00]">ID: RS-09</span>
+            <span class="text-[10px] text-[#FF5C00] animate-pulse"><div class=.ALERT></div></span>
+        </div>
+        <h3 class="text-lg font-bold tracking-tighter mb-1">SOLAR_PROBE_V</h3>
+        <p class="text-[10px] opacity-60 mb-4">Target: L1 Lagrange Point</p>
+
+        <div class="w-full bg-white/5 h-1.5 mb-2">
+            <div class="bg-[#FF5C00] h-full w-[88%] shadow-[0_0_8px_#FF5C00]"></div>
+        </div>
+        <div class="flex justify-between text-[9px] opacity-40">
+            <span>88% COMPLETE</span>
+            <span>TEMP: 1,400</span>
+        </div>
+    </div>
+
+    <div class="glass-panel p-6 rounded-sm border-1-4 border-gray-500 relative group opacity-60">
+        <div class="flex justify-between items-start mb-4">
+            <span class="text-[10px] bg-gray-500/20 px-2 py-0.5 rounded text-gray-400">ID: QM-11</span>
+            <span class="text-[10px] text-gray-400 uppercase">Offline</span>
+        </div>
+        <h3 class="text-lg font-bold tracking-tighter mb-1">LUNAR_BASE_ALPHA</h3>
+        <p class="text-[10px] opacity-60 mb-4">Target: Shackleton Crater</p>
+
+        <div class="w-full bg-white/10 h-1.5 mb-2">
+            <div class="bg-gray-500 h-full w-full"></div>
+        </div>
+        <div class="flex justify-between text-[9px] opacity-40">
+            <span>100% COMPLETE</span>
+            <span>STATUS: DECOMMISSIONED</span>
+        </div>
+    </div>
+</section>

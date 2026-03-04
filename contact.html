@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aestheris Systems</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="bridge">
+        <div class="bridge-logo">
+            <div class="logo-icon">
+                <span>AESTHERIS // OS</span>
+            </div>
+
+            <div class="bridge-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="manifest.html" class="nav-item">Manifest</a>
+                <a href="fleet.html" class="nav-item">Fleet</a>
+                <a href="telemetry.html" class="nav-item">Telemetry</a>
+                <a href="crew.html" class="nav-item">Crew</a>
+                <a href="research.html" class="nav-item">Research</a>
+                <a href="contact.html" class="nav-item active">Contact</a>
+                </div>
+
+                <div class="bridge-stats">
+                    <div class="stat-group">
+                        <span class="stat-label">SIG</span>
+                        <div class="signal-bars">
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-flicker"></div>
+                        </div>
+                    </div>
+</nav>
+
+<main class="comm-container">
+    <div class="comm-box">
+        <header class="comm-header">
+            <p class="status-glow">ENCRYPTION: AES-256 ENABLED</p>
+            <h1>Subspace Transmissions</h1>
+        </header>
+
+        <form class="comm-form">
+            <div class="input-row">
+                <div class="input-group">
+
+                    <label>SENDER_ID</label>
+                    <input type="text" placeholder="ENTITY_NAME" required>
+                </div>
+                <div class="input-group">
+
+                    <label>ORBITAL_FREQ</label>
+                    <input type="text" placeholder="142.04 MHz" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+
+                <label>TRANSMISSION_CONTENT</label>
+                <textarea rows="5" placeholder="Enter encrypted message..."></textarea>
+                </div>
+
+                <button type="submit" class="transmit-btn">SEND_SIGNAL</button>
+        </form>
+    </div>
+    </main>
+
+    <button class="terminal-trigger" onclick="toggleTerminal()">_CONSOLE</button>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0') + ":" + now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('clock').innerHTML = timeString;
+        }
+            setTimeout(updateClock, 1000);
+            updateClock(); // Run immediately
+    </script>
+</body>
+</html>

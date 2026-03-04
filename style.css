@@ -1,0 +1,811 @@
+@keyframes shimmer {
+    100% { transform: translateX(100%); }
+}
+
+.engineering-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Wider space for the ship drawing */
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.blueprint-box {
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+}
+
+.status-text {
+    font-size: 10px;
+    color: #00F0FF;
+    letter-spacing: 2px;
+}
+
+/* This turns the whole site dark and technical */
+body {
+    background-color: #05070a;
+    color: #ffffff;
+    font-family: 'Courier New', 'Courier New', Courier, monospace;
+}
+
+/* This creates the 'Blueprint' look for your ship */
+.blueprint-card {
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px dashed #00F0FF;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.blueprint-card {
+    background-image: linear-gradient(0, 240, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border: 1px solid #00F0FF;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Adds a moving 'Scanline' effect to the ship */
+.blueprint-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 240, 255, 0.5);
+    animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+
+.specs-table {
+    border-left: 3px solid #00F0FF; /* High-tech accent border */
+    padding-left: 20px;
+}
+
+.specs-table td {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: JetBrains Mono, monospace; /* Use that tech font you linked! */
+    font-size: 13px;
+}
+
+.specs-table .label {
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.specs-table .value {
+    color: #fff;
+    text-align: right;
+    font-weight: bold;
+}
+
+/* Bridge Container */
+.bridge {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(5, 7, 10, 0.8); /* Match your background with transparency */
+}
+
+backdrop-filter: blur(10px); /* Professional glass effect */
+border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+z-index: 1000; /* Ensures it stays above all content */
+}
+
+/* Logo Section */
+.bridge-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    font-size: 14px;
+}
+
+.logo-icon {
+    width: 12px;
+    height: 12px;
+    background-color: #FF5C00; /* Your orange accent color */
+    border-radius: 2px;
+}
+
+/* Navigation Links */
+.bridge-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-item {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-item:hover {
+    color: #00F0FF; /* Cyan glow on hover */
+}
+
+.nav-item.active {
+    color: #00F0FF;
+    border-bottom: 2px solid #00F0FF;
+    padding-bottom: 5px;
+}
+
+.nav-item.locked {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+/* Add this to your main container or body */
+.container,main {
+    padding-top: 100px; /* This pushes your content down so it doesn't hide behind the bridge */
+}
+
+.bridge-stats {
+    display: flex;
+    font-family: JetBrains Mono, monospace;
+    align-items: center;
+    gap: 25px;
+}
+
+.stat-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-label {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+}
+
+.stat-value {
+    font-size: 11px;
+    color: #00F0FF;
+}
+
+/* Signal Bars */
+.signal-bars {
+    display: flex;
+    gap: 5px;
+    align-items: flex-end;
+}
+
+.bar {
+    width: 3px;
+    background: rgba(255, 255, 255, 0.1);
+}
+.bar:nth-child(1) { height: 4px; }
+.bar:nth-child(2) { height: 7px; }
+.bar:nth-child(3) { height: 10px; }
+.bar:nth-child(4) { height: 13px; }
+.bar.active { background: #00F0FF; }
+
+/* Flickering Signal Animation */
+.flicker {
+    animation: signal-fade 2s infinite;
+}
+
+@keyframes signal-fade {
+    0%, 100% { background: #00F0FF; opacity: 1; }
+    50% { background: rgba(0, 240, 255, 0.2); opacity: 0.5; }
+}
+
+.bridge-time {
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    padding-left: 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Telemetry Layout */
+.telemetry-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.map-card {
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-overlay {
+    position: relative;
+    overflow: hidden;
+}
+
+.ping {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 240, 255, 0.5);
+    animation: ping 1s linear infinite;
+}
+    
+@keyframes ping {
+    0% { transform: scale(0); }
+    50% { transform: scale(1); }
+    100% { transform: scale(0); }
+}
+
+.grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: grid-lines 1s linear infinite;
+}
+    
+@keyframes grid-lines {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(0); }
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(0, 240, 255, 0.05);
+    border-top: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.card-footer span {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+}
+    
+.stream-card {
+    background: rgba(0, 240, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-log {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 20px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.data-log p {
+    margin-bottom: 10px;
+}
+        
+.data-log .timestamp {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+
+.data-log .warning {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* 1. Ticker Container */
+.ticket-wrap {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background-color: rgba(0, 240, 255, 0.05);
+    border-top: 1px solid rgba(0, 240, 255, 0.3);
+    display: flex;
+    overflow: hidden; /* Hides the text when it`s off-screen */
+    align-items: center;
+    z-index: 999;
+}
+
+/* 2. Static Title Label */
+.ticker-title {
+    background: #00F0FF;
+    font-size: 10px;
+    padding: 0 15px;
+    height: 100%;
+    color: #05070a;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    z-index: 1001; /* Stays on top of the moving text */
+}
+
+/* 3. The Moving Track */
+.ticker {
+    display: flex;
+    white-space: nowrap;
+    padding-left: 100%; /* Start the text off-screen to the right */
+    animation: ticker-move 30s linear infinite;
+}
+
+/* 4. Individual Items */
+.ticker__item {
+    font-size: 11px;
+    padding: 0 40px;
+    color: #00F0FF;
+    display: inline-block;
+    font-family: JetBrains Mono, monospace;
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);
+}
+
+/* 5. The Animation */
+@keyframes ticker-move {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* Pause animation on hover so users can read alerts */
+.ticker-title:hover .ticker {
+    animation-play-state: paused;
+}
+
+/* 1. The Glitch Animation */
+.glitch {
+    position: relative;
+    animation: glitch-skew 4s infinite linear alternative-reverse;
+}
+
+/* 2. Creating the 'Ghost' layers using Pseudo-elements */
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text); /* This pulls the text from the HTML */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch-text::before {
+    color: #00F0FF;
+    z-index: -1;
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    color: #FF5C00; /*Orange ghosting effect */
+    z-index: -2;
+    animation: glitch-anim2 3s infinite linear alternate-reverse;
+}
+
+/* 3. The "Shifting" Keyframes */
+@keyframes glitch-anim {
+    0% { clip-path: inset(50% 0 30% 0); transform: translate(-5px); }
+    20% { clip-path: inset(10% 0 80% 0); transform: translate(5px); }
+    40% { clip-path: inset(40% 0 40% 0); transform: translate(-5px); }
+    60% { clip-path: inset(80% 0 5% 0); transform: translate(5px); }
+    80% { clip-path: inset(15% 0 60% 0); transform: translate(-5px); }
+    100% { clip-path: inset(50% 0 30% 0); transform: translate(5px); }
+}
+
+@keyframes glitch-skew {
+    0% { transform: skewX(0deg); }
+    20% { transform: skewX(3deg); }
+    21% { transform: skewX(-3deg); }
+    100% { transform: skewX(0deg); }
+}
+
+/* Crew Layout */
+.crew-container {
+    max-width: 1000px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+.crew-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Personnel Card */
+.crew-card {
+    background: rgba(0, 240, 255, 0.02);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    width: 250px;
+    padding: 15px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.crew-card:hover {
+    background: rgba(0, 240, 255, 0.05);
+    border-color: #00F0FF;
+}
+
+/* Bio-Scan Animation */
+.bio-scan-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: #0a0fla;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #00F0FF;
+    box-shadow: 0 0 15px #00F0FF;
+    animation: scan-move 4s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes scan-move {
+    0%, 100% { top: 0; opacity: 0.2; }
+    50% { top: 100%; opacity: 1; }
+}
+
+/* Vital Signs */
+.vital-signs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+}
+
+.vital {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #FF5C00; /* Orange accent for medical data */
+}
+
+/* Terminal Container */
+.terminal-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: rgba(5, 7, 10, 0.98);
+    border-top: 2px solid #00F0FF;
+    z-index: 2000;
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    flex-direction: column;
+}
+
+.terminal-hidden {
+    transform: translateY(100%); /*Hides it below the screen*/
+}
+
+/* Header & Input*/
+.terminal-header {
+    display: flex;
+    color: #05070a;
+    justify-content: space-between;
+    padding: 5px 20px;
+    font-size: 10px;
+    font-weight: bold;
+    background: #00F0FF;
+}
+
+.terminal-body {
+    flex-grow: 1;
+    padding: 20px;
+    font-size: 12px;
+    color: #00F0FF;
+    overflow-y: auto;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal-input-area {
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#user-input {
+    font-family: inherit;
+    outline: none;
+    width: 100%;
+    color: white;
+    background: transparent;
+    border: none;
+}
+
+/* Floating Toggle Button */
+.terminal-trigger {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    background: transparent;
+    border: 1px solid #00F0FF;
+    padding: 5px 15px;
+    color: #00F0FF;
+    font-family: 'JetBrains Mono', monospace;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Research Layout */
+.research-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 5% 50px;
+}
+
+.lab-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Sequence Viewer Styling */
+.analysis-card {
+    background: rgba(0, 240, 255, 0.03);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 30px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.dna-node {
+    font-size: 24px;
+    letter-spacing: 8px;
+    color: rgba(255, 255, 255, 0.1);
+    margin: 15px 0;
+}
+
+.dna-node-active {
+    color: #00F0FF;
+    font-weight: bold;
+}
+
+/* Progress Bars */
+.progress-bar {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.fill {
+    background: #00F0FF;
+    border-radius: inherit;
+    height: 100%;
+}
+
+/* Animated Scanning Text */
+.scanning-text {
+    color: #FF5C00;
+    font-size: 11px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Chart Layout */
+.chart-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+/* The Pie Chart using Conic Gradient */
+.composition-pie {
+    width: 150px;
+    height: 150px;
+    background: conic-gradient(#00F0FF 0% 65%, /* Xenon - Cyan*/ #FF5C00 65% 85%, /* Oxygen - Orange */ rgba(255, 255, 255, 0.1) 85% 100% /* Nitrogen - White */);
+    border: 5px solid rgba(0, 240, 255, 0.1);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+    position: relative;
+}
+
+/* Hollow Center Effect {Donut Chart} */
+.composition-pie::after {
+    content: "9.4";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: #05070a; /* Match your background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #00F0FF;
+    font-weight: bold;
+}
+
+/* Legend Styling */
+.chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.legend-item {
+    font-size: 11px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dot { width: 8px; height: 8px; border-radius: 2px; }
+.xenon { background: #00F0FF; box-shadow: 0 0 5px #00F0FF; }
+.oxygen { background: #FF5C00; box-shadow: 0 0 5px #FF5C00; }
+.nitrogen { background: rgba(255, 255, 255, 0.3); }
+
+.stable-text {
+    color: #00FF41; /* Classic Matrix Green */
+}
+
+/* Comm Page Layout */
+.comm-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.comm-container {
+    width: 100%;
+    max-width: 700px;
+    padding: 100px 20px;
+}
+
+.comm-box {
+    background: rgba(0, 240, 255, 0.02);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Diagonal Background Lines for "Classified" feel */
+.comm-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0, 240, 255, 0.02) 10px, rgba(0, 240, 255, 0.02) 11px );
+    pointer-events: none;
+}
+
+.input-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.comm-form textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 15px;
+    font-family: 'JetBrains Mono', monospace;
+    outline: none;
+    resize: none;
+}
+
+.transmit-btn {
+    width: 100%;
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid #00F0FF;
+    color: #00F0FF;
+    font-weight: bold;
+    padding: 15px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.transmit-btn:hover {
+    background: #00F0FF;
+    color: #05070a;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+}
+
+.login-btn {
+    background: transparent;
+    color: #00f2ff; /* That cyan glow color */
+    border: 1px solid #00f2ff;
+    padding: 5px 15px;
+    font-family: monospace;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #00f2ff;
+    color: #000;
+    box-shadow: 0 0 10px #00f2ff;
+}

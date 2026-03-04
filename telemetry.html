@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+    <title>Aestheris Systems | Command</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="telemetry-container">
+            <header class="header-main">
+                <p class="status-glow">SATELLITE_LINK: ESTABLISHED</p>
+                <h1>Orbital Telemetry Hub</h1>
+                </header>
+
+                <body class="telemetry-body">
+
+                    <nav class="bridge">
+                        <div class="bridge-logo">
+                            <div class="logo-icon"></div>
+                            <span>Aestheris Systems</span>
+                            </div>
+                            <div class="bridge-links">
+                                <a href="index.html" class="nav-item">Home</a>
+                                <a href="manifest.html" class="nav-item">Manifest</a>
+                                <a href="fleet.html" class="nav-item">Fleet</a>
+                                <a href="telemetry.html" class="nav-item active">Telemetry</a>
+                                <a href="crew.html" class="nav-item">Crew</a>
+                                <a href="research.html" class="nav-item">Research</a>
+                                <a href="contact.html" class="nav-item">Contact</a>
+                                </div>
+                                
+                                <div class="bridge-stats">
+                                    <div class="stat-group">
+                                        <div class="stat-label">SHIELDS</div>
+                                        <div class="stat-value">Active</div>
+                                        </div>
+                                        <div class="stat-group">
+                                            <div class="stat-label">SIGNAL</div>
+                                            <div class="stat-value">94%</div>
+                                            </div>
+                                            <div class="signal-bars">
+                                                <div class="bar-active"></div>
+                                                <div class="bar-active"></div>
+                                                <div class="bar-active"></div> 
+                                                <div class="bar-flicker"></div>
+                                            </div>
+                                </div>
+
+                                            <div class="stat-group">
+                                                <div class="stat-label">ORBITAL</div>
+                                                <div class="stat-value">DECAYING</div>
+                                                </div>
+                                                </div>
+                                                </nav>
+
+                <div class="telemetry-grid">
+                    <div class="map-card">
+                        <div class="map-overlay">
+                            <div class="ping"></div>
+                            <div class="ping">
+                                style="top: 30%; left: 70%; animation-delay: 1s;"></div>
+                                <div class="grid-lines"></div>
+                                </div>
+                                <div class="card-footer">
+                                    <span>SECTOR: 07-G</span>
+                                    <span>COORD: 40.7128°N, 74.0060°W</span>
+                                    </div>
+                                    </div>
+
+                                    <div class="stream-card">
+                                        <h3>Live_Signal_Feed</h3>
+                                        <div class="data-log">
+                                            <p><span class="timestamp">[12:44:01]</span> Incoming packet from ISS_ALPHA</p>
+                                            <p><span class="timestamp">[12:44:05]</span> Signal strength at 94%</p>
+                                            <p><span class="timestamp">[12:44:12]</span> Adjusting orbital decay parameters...</p>
+                                            <p class="warning"><span class="timestamp">[12:44:20]</span> Solar flare detected - Shielding active</p>
+                                            <p><span class="timestamp">[12:44:28]</span> Re-routing telemetry via Lunar-Gateway</p>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                            <div class="ticket-wrap">
+                                                <div class="ticker-title">MISSION ALERTS</div>
+                                                <div class="ticker">
+                                                    <div class="ticker__item">SIGNAL ACQUIRED: VANGUARD-01 POSITIONED IN STABLE ORBIT...</div>
+                                                    <div class="ticker__item">WARNING: INCREASED SOLAR RADIATION DETECTED IN SECTOR 7...</div>
+                                                    <div class="ticker__item">CARGO SHUTTLE 'AETHER-9' HAS DOCKED WITH LUNAR GATEWAY...</div>
+                                                    <div class="ticker__item">DEEP SPACE TELEMETRY LINK ESTABLISHED WITH MARS OUTPOST...</div>  
+                                                    <div class="ticker__item">SYSTEM UPDATE: NEURAL LINK v4.0.2 SUCCESSFULLY DEPLOYED...</div>
+                                            </div>
+                                            </div>
+
+                                            <div class="ticker">
+                                                <div class="ticker__item glitch-text" data-text="SIGNAL ACQUIRED: VANGUARD-01 POSITIONED...">
+                                                    SIGNAL ACQUIRED: VANGUARD-01 POSITIONED...
+                                                    </div>
+                                                    <div class="ticker__item glitch-text" data-text="WARNING: INCREASED SOLAR RADIATION...">
+                                                        WARNING: INCREASED SOLAR RADIATION...
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            
+                    < div id="terminal-overlay" class="terminal-hidden">
+                    < div class="terminal-header">
+                    <span>AESTHERIS_TERMINAL_v4.0.2</span>
+                    <button onclick="toggleTerminal()" class="close-btn">[X]</button>
+                    </div>
+                    < div class="terminal-body" id="terminal-content">
+                    <p class="terminal-line">> SYSTEM_READY...</p>
+                    <p class="terminal-line">> TYPE 'HELP' FOR COMMAND_LIST</p>
+                    </div>
+                    <div class="terminal-input-area">
+                        <span class="prompt">></span>
+                        <input type="text" id="user-input" autocomplete="off" placeholder="Enter command..." />
+                    </div>
+                    </div>
+
+                    <button class="terminal-trigger" onclick="toggleTerminal()">_CONSOLE</button>
+                    </body>
+    </html>

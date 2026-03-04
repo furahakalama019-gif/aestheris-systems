@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aestheris Systems</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="bridge">
+        <div class="bridge-logo">
+            <div class="logo-icon">
+                <span>AESTHERIS // OS</span>
+            </div>
+
+            <div class="bridge-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="manifest.html" class="nav-item">Manifest</a>
+                <a href="fleet.html" class="nav-item">Fleet</a>
+                <a href="telemetry.html" class="nav-item">Telemetry</a>
+                <a href="crew.html" class="nav-item">Crew</a>
+                <a href="research.html" class="nav-item active">Research</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+                </div>
+
+                <div class="bridge-stats">
+                    <div class="stat-group">
+                        <span class="stat-label">SIG</span>
+                        <div class="signal-bars">
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-flicker"></div>
+                        </div>
+                    </div>
+</nav>
+
+<main class="research-container">
+    <header class="header-main">
+        <p class="status-glow">LAB_STATUS: ANALYZING_XENO_SAMPLES...</p>    
+        <h1>Scientific Research Division</h1>
+    </header>
+
+    <div class="lab-grid">
+        <div class="analysis-card">
+            <div class="card-header"> SEQUENCE_VIEWER // B-12</div>
+            <div class="dna-viewer">
+                <div class="dna-node-active">G-A-T-T-A-C-A</div>
+                <div class="dna-node">C-G-T-A-A-C-T</div>
+                <div class="dna-node-active">T-T-A-C-G-G-A</div>
+                <div class="dna-node">A-G-C-T-T-A-G</div>
+
+                <div class="analysis-card chart-card">
+                    <div class="card-header"> ATMOSPHERIC_COMPOSITION // SAMPLE_09</div>
+                    <div class="chart-container">
+                        <div class="composition-pie"></div>
+
+                        <div class="chart-legend">
+                            <div class="legend-item"><span class="dot xenon"></span>XENON (65%)</div>
+                            <div class="legend-item"><span class="dot oxygen"></span>OXYGEN (20%)</div>
+                            <div class="legend-item"><span class="dot nitrogen"></span>NITROGEN (10%)</div>
+                        </div>
+                    </div>
+                    <div class="analysis-footer">
+                        <p>REAGENT_STABILITY: <span class="stable-text">OPTIMAL</span></p>
+                    </div>
+                </div>
+                
+            <div class="analysis-footer">
+                <span>CONFIDENCE: 94.2%</span>
+                <span class="scanning-text">SCANNING...</span>
+                </div>
+                </div>
+
+                <div class="projects-card">
+                    <h3>Active_Project_Logs</h3>
+
+                    <div class="project-item">
+                        <div class="project-label">Xenon_Propulsion_v4</div>
+                        <div class="progress-bar"><div class="fill" style="width: 72%;"</div></div>
+                        </div>
+
+                        <div class="project-item">
+                            <div class="project-label">Cryo_Stasis_Calibration</div>
+                            <div class="progress-bar"><div class="fill" style="width: 48%;"</div></div>
+                            </div>
+
+                            <div class="project-item">
+                                <div class="project-label">Deep_Space_Botany</div>
+                                <div class="progress-bar"><div class="fill" style="width: 91%;"</div></div>
+                                </div>
+                                </div>
+                                </div>
+</main>
+
+<button class="terminal-trigger" onclick="toggleTerminal()">_CONSOLE</button>
+
+<script>
+    // Digital Clock Logic
+    function updateClock() {
+        const now = new Date();
+
+        document.getElementById('clock').textContent = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+        setTimeout(updateClock, 1000);
+        updateClock(); // Run immediately
+    }
+</script>
+</body>
+</html>

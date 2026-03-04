@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aestheris Systems</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="bridge">
+        <div class="bridge-logo">
+            <div class="logo-icon">
+                <span>AESTHERIS // OS</span>
+            </div>
+
+            <div class="bridge-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="manifest.html" class="nav-item">Manifest</a>
+                <a href="fleet.html" class="nav-item">Fleet</a>
+                <a href="telemetry.html" class="nav-item">Telemetry</a>
+                <a href="crew.html" class="nav-item active">Crew</a>
+                <a href="research.html" class="nav-item">Research</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+                </div>
+
+                <div class="bridge-stats">
+                    <div class="stat-group">
+                        <span class="stat-label">SIG</span>
+                        <div class="signal-bars">
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-active"></div>
+                            <div class="bar-flicker"></div>
+                        </div>
+                    </div>
+
+                    <main class="crew-container">
+                        <header class="header-main">
+                            <p class="status-glow">SYSTEM // PERSONNEL_DATABASE: ACCESS GRANTED</p>
+                            <h1>Active Crew Manifest</h1>
+                        </header>
+
+                        <div class="crew-grid">
+                            <div class="crew-card">
+                                <div class="bio-scan-container">
+                                    <div class="bio-photo">
+                                        <div class="photo-placeholder">IMG_041</div>
+                                </div>
+                                <div class="scan-line"></div>
+                                </div>
+                                <div class="crew-info">
+                                    <h3 class="crew-name">CDR. ELIAS VANCE</h3>
+                                    <p class="crew-position">COMMANDER</p>
+                                    <div class="vital-signs">
+                                        <span class="vital">BPM: 72</span>
+                                        <span class="vital">O2: 98%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="crew-card">
+                                    <div class="bio-scan-container">
+                                        <div class="bio-photo">
+                                            <div class="photo-placeholder">IMG_098</div>
+                                            </div>
+                                            <div class="scan-line"></div>
+                                            </div>
+                                            <div class="crew-info">
+                                                <div class="crew-name">CDR. FRANCIS FURAHA</div>
+                                                <p class="crew-position">CAPTAIN</p>
+                                                <div class="vital-signs">
+                                                    <span class="vital">BPM: 68</span>
+                                                    <span class="vital">O2: 99%</span>
+                                                    </div>
+                                                    </div>
+                                    </div> 
+                                </div>
+                    </main>
+
+                    < div id="terminal-overlay" class="terminal-hidden">
+                    < div class="terminal-header">
+                    <span>AESTHERIS_TERMINAL_v4.0.2</span>
+                    <button onclick="toggleTerminal()" class="close-btn">[X]</button>
+                    </div>
+                    < div class="terminal-body" id="terminal-content">
+                    <p class="terminal-line">> SYSTEM_READY...</p>
+                    <p class="terminal-line">> TYPE 'HELP' FOR COMMAND_LIST</p>
+                    </div>
+                    <div class="terminal-input-area">
+                        <span class="prompt">></span>
+                        <input type="text" id="user-input" autocomplete="off" placeholder="Enter command..." />
+                    </div>
+                    </div>
+
+                    <button class="terminal-trigger" onclick="toggleTerminal()">_CONSOLE</button>
+                    </body>
+                    </html>
